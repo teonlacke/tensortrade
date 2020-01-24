@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import gym
+import uuid
 import logging
 import importlib
 import pandas as pd
@@ -42,6 +43,9 @@ if importlib.util.find_spec("matplotlib") is not None:
 
 class TradingEnvironment(gym.Env, TimeIndexed):
     """A trading environments made for use with Gym-compatible reinforcement learning algorithms."""
+
+    agent_id: str = None
+    episode_id: str = None
 
     def __init__(self,
                  portfolio: Union[Portfolio, str],
@@ -373,6 +377,8 @@ class TradingEnvironment(gym.Env, TimeIndexed):
         Returns:
             The episode's initial observation.
         """
+        self.episode_id = str(uuid.uuid4())
+
         self.clock.reset()
 
         if not self._exchange.is_live:
