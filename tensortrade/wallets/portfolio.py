@@ -225,12 +225,13 @@ class Portfolio(Component, TimedIdentifiable, FeedListener):
             self._keys = self.find_keys(data)
 
         index = pd.Index([self.clock.step], name="step")
+        print('index: ', index)
         performance_data = {k: data[k] for k in self._keys}
         performance_data['base_symbol'] = self.base_instrument.symbol
         performance_step = pd.DataFrame(performance_data, index=index)
 
         net_worth = data['net_worth']
-
+        print(net_worth)
         if self._performance is None:
             self._performance = performance_step
             self._initial_net_worth = net_worth
