@@ -97,5 +97,6 @@ AAPL = Instrument('AAPL', 2, 'Apple stock')
 MSFT = Instrument('MSFT', 2, 'Microsoft stock')
 TSLA = Instrument('TSLA', 2, 'Tesla stock')
 AMZN = Instrument('AMZN', 2, 'Amazon stock')
+BNTX = Instrument('BNTX', 2, 'BionTech stock')
 
 SPY = Instrument('SPY', 2, 'SPY Index')
